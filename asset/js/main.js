@@ -47,11 +47,16 @@ function numeroRandom(min, max) {
 
 // evento al click che fa partire il programma di memorizzazione numeri
 button.addEventListener('click', function () {
+
+    // disabilito il tasto cosi non si possono accavallare piu click
+    document.getElementById('btn').disabled = true;
     
     // riporto le array dei numeri random e dei numeri inseriti dall utente
     // vuote cosi ogni volta che riparte la funzione si azzera
+    // svuoto anche id in html dell output
     numRandomArray = [];
     numUserArray = [];
+    output.innerHTML = '';
 
     //riempiamo l array dei numeri random
     while (numRandomArray.length < numFix) {
@@ -115,6 +120,9 @@ button.addEventListener('click', function () {
 
         output.innerHTML = `hai indovinato ${numUserArray.length} numeri! ossia: ${numUserArray}`;
         
+        // riabilito il tasto della funzione al click
+        document.getElementById('btn').disabled = false;
+
     }, 5000 );
 
 })
